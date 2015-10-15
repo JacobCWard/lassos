@@ -31,12 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'scoring',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,6 +69,9 @@ TEMPLATES = [
         },
     },
 ]
+
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
+
 
 WSGI_APPLICATION = 'scioly.wsgi.application'
 
