@@ -6,8 +6,8 @@ class Competition(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     start_date = models.DateField()
-    divisions = models.ForeignKey('Division')
-    managers = models.ForeignKey(User)
+
+    manager = models.ForeignKey(User)
 
     def __str__(self):
         return self.name
@@ -24,22 +24,26 @@ class Division(models.Model):
     ]
 
     nickname = models.CharField(max_length=100)
-    div_type = models.CharField(choices=DIV_TYPE_CHOICES, verbose_name='Type', max_length=30)
-    events = models.ForeignKey('Event')
-    teams = models.ForeignKey('Team')
+    div_type = models.CharField(choices=DIV_TYPE_CHOICES, verbose_name='Division', max_length=30)
+
+    competition = models.ForeignKey('Competition', null=True, related_name='divisions')
 
     def __str__(self):
-        return self.div_type
+        return self.get_div_type_display()
 
 
 class Team(models.Model):
     school = models.CharField(max_length=100)
     coaches = models.ForeignKey(User)
-    members = models.ForeignKey('Participant')
 
     contact_name = models.CharField(max_length=40)
     contact_phone = PhoneNumberField()
     contact_email = models.EmailField()
+
+    division = models.ForeignKey('Division', null=True, related_name='teams')
+
+    def number_of_members(self):
+        return self.members.count()
 
     def __str__(self):
         return self.school
@@ -50,7 +54,8 @@ class Event(models.Model):
     location = models.CharField(max_length=100)
     time = models.TimeField()
     category = models.CharField(max_length=100)
-    participants = models.ForeignKey('Participant')
+
+    division = models.ForeignKey('Division', null=True, related_name='events')
 
     def __str__(self):
         return self.name
@@ -60,10 +65,13 @@ class Participant(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     gender = models.CharField(choices=[('M', 'Male'), ('F', 'Female')], max_length=3)
-    competing = models.BooleanField()
+    competing = models.BooleanField(default=True)
     grade = models.CharField(max_length=30)
-    date_of_birth = models.DateTimeField()
+    date_of_birth = models.DateField()
     address = models.TextField()
+
+    team = models.ForeignKey('Team', null=True, related_name='members')
+    events = models.ManyToManyField('Event', related_name='participants')
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
