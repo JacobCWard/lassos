@@ -1,8 +1,12 @@
+{% load sass_tags %}
+include mixins.jade
 !!! 5
 html(lang='en')
     head
         title= title
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        //- +css("{% sass_src 'stylesheets/app.scss' %}")
+        link(href="{% sass_src 'stylesheets/app.scss' %}", type='text/css', rel='stylesheet')
     body
         h1= title
         block content
