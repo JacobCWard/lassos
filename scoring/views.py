@@ -2,4 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("<title>LASSOS</title><p>Welcome! Go to the <a href='/admin'>Admin</a> part of the site.</p>")
+    context = {'title': 'Home'}
+    return render(request, 'index.jade', context)
+
+def tech(request):
+    context = {'title': 'Technology Used'}
+    return render(request, 'tech.jade', context)
