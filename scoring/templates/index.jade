@@ -1,9 +1,18 @@
 extends base
+{% load static from staticfiles %}
 
 block content
-    p JSON Endpoints
-    ul
-        li: a(href='/json') /json
-        li: a(href='/json/competitions') /json/competitions
-        li: a(href='/json/events') /json/events
-        li: a(href='/json/participants') /json/participants
+    .row
+        .col-md-4
+            p JSON Endpoints
+            ul
+                li: a(href='/json') /json
+                li: a(href='/json/competitions') /json/competitions
+                li: a(href='/json/events') /json/events
+                li: a(href='/json/participants') /json/participants
+
+        .col-md-4
+            p Token Canvas
+            canvas(width='100', height='100')#canvas.token-canvas
+
+    script(src="{% static 'javascripts/index.js' %}")

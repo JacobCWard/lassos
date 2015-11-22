@@ -17,6 +17,6 @@ Requirements for Term Project from Syllabus:
 - [x] JSON
 - [x] A data store
 - [x] A web server
-- [ ] Technologies Used page
+- [x] Technologies Used page
 
 Not all of these are necessary for the goals of this project, but we'd like to get a good grade, so we will include them. 🙃
