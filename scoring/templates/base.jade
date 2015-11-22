@@ -3,11 +3,14 @@ include mixins.jade
 !!! 5
 html(lang='en')
     head
-        title= title
+        meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        title= title
         //- +css("{% sass_src 'stylesheets/app.scss' %}")
         link(href="{% sass_src 'stylesheets/app.scss' %}", type='text/css', rel='stylesheet')
     body
-        h1= title
-        block content
-            p You've got nothing.
+        .container
+            include nav.jade
+            .jumbotron: h1= title
+            block content
+                p You've got nothing.
