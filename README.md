@@ -12,9 +12,9 @@ Requirements for Term Project from Syllabus:
 - [x] JavaScript
 - [x] jQuery
 - [ ] SVG
-- [ ] PHP
+- [x] Python (in place of PHP)
 - [ ] AJAX
-- [ ] JSON
+- [x] JSON
 - [x] A data store
 - [x] A web server
 - [ ] Technologies Used page
