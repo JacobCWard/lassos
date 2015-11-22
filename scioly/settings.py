@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'sass_processor',
     'scoring',
+    'github_hook',
 )
 
 MIDDLEWARE_CLASSES = (
