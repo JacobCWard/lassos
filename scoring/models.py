@@ -50,10 +50,23 @@ class Team(models.Model):
 
 
 class Event(models.Model):
+    CAT_LIFE = '1'
+    CAT_EARTH = '2'
+    CAT_PHYS = '3'
+    CAT_TECH = '4'
+    CAT_INQUIRY = '5'
+    EVENT_CAT_CHOICES = [
+        (CAT_LIFE, 'Life, Personal & Social Science'),
+        (CAT_EARTH, 'Earth & Space Science'),
+        (CAT_PHYS, 'Physical Science & Chemistry'),
+        (CAT_TECH, 'Technology & Engineering'),
+        (CAT_INQUIRY, 'Inquiry & Nature of Science'),
+    ]
+
     name = models.CharField(max_length=30)
     location = models.CharField(max_length=100)
     time = models.TimeField()
-    category = models.CharField(max_length=100)
+    category = models.CharField(choices=EVENT_CAT_CHOICES, verbose_name='Category', max_length=30)
 
     division = models.ForeignKey('Division', null=True, related_name='events')
 
@@ -75,4 +88,3 @@ class Participant(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
-
