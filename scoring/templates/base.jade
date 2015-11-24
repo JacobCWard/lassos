@@ -2,15 +2,18 @@
 include mixins.jade
 !!! 5
 html(lang='en')
-    head
-        meta(charset='utf-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1.0')
-        title= title
-        //- +css("{% sass_src 'stylesheets/app.scss' %}")
-        link(href="{% sass_src 'stylesheets/app.scss' %}", type='text/css', rel='stylesheet')
-    body
-        .container
-            include nav.jade
-            .jumbotron: h1= title
-            block content
-                p You've got nothing.
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		title= title
+		//- +css("{% sass_src 'stylesheets/app.scss' %}")
+		link(href="{% sass_src 'stylesheets/app.scss' %}", type='text/css', rel='stylesheet')
+	body
+		.container
+			include nav.jade
+			.jumbotron: h1= title
+			block content
+				p You've got nothing.
+
+		script(src="//code.jquery.com/jquery-2.1.4.min.js", type='text/javascript')
+		block scripts
