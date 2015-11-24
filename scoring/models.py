@@ -23,7 +23,6 @@ class Division(models.Model):
         (TYPE_C, 'C (High)')
     ]
 
-    nickname = models.CharField(max_length=100)
     div_type = models.CharField(choices=DIV_TYPE_CHOICES, verbose_name='Division', max_length=30)
 
     competition = models.ForeignKey('Competition', null=True, related_name='divisions')
