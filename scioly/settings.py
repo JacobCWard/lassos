@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import sass_processor
+import socket
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,9 +25,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '13lm2eox7er$m&v-5n6!)9z!&4j9z5*c3372olcj8%f_*h+(cd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if socket.gethostname() == 'MacBook-Pro-2.local': # append names of other development machines here
+    DEBUG = True
+else:
+    DEBUG = True # Change to false in production
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.lassos.us',
+    '.lassos.us.',
+    '.localhost',
+    '.localhost.',
+]
 
 
 # Application definition
@@ -95,7 +104,7 @@ DATABASES = {
 	    'USER': 'django',
 	    'PASSWORD': '4KVs6xKRtK',
 	    'HOST': 'localhost',
-	    'PORT': '',            
+	    'PORT': '',
     }
 }
 
@@ -123,4 +132,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'sass_processor.finders.CssFinder',
+)
+STATICFILES_DIRS = (
+    './staticdir/',
 )
