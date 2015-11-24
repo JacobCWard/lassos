@@ -7,7 +7,7 @@ This project was started as a term project for CSIS 4350 (Web Programming) at So
 
 Requirements for Term Project from Syllabus:
 - [x] HTML Canvas Element
-- [ ] HTML Video Element
+- [x] HTML Video Element
 - [x] CSS
 - [x] JavaScript
 - [x] jQuery
