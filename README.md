@@ -6,7 +6,7 @@ A project by two guys who mostly know what they're doing.
 This project was started as a term project for CSIS 4350 (Web Programming) at Southern Utah University.
 
 Requirements for Term Project from Syllabus:
-- [ ] HTML Canvas Element
+- [x] HTML Canvas Element
 - [ ] HTML Video Element
 - [x] CSS
 - [x] JavaScript
